@@ -35,7 +35,7 @@
                         <div class="is-size-4 publication-authors">
                             <a href="https://yanjieze.com">Yanjie Ze<sup>1</sup></a>*, <a href="https://nicklashansen.github.io/">Nicklas Hansen<sup>2</sup></a>*, 
                             <a href="https://yinboc.github.io/">Yinbo Chen<sup>2</sup></a>, <a href="https://natsu6767.github.io/">Mohit Jain<sup>2</sup></a>, 
-                            <a href="https://jangirrishabh.github.io/">Rishabh Jangir<sup>2</sup></a>, <a href="https://xiaolonw.github.io/">Xiaolong Wang<sup>2</sup></a>
+                          <a href="https://xiaolonw.github.io/">Xiaolong Wang<sup>2</sup></a>
                         </div>
                         <div class="is-size-4 publication-date"><sup>1</sup>Shanghai Jiao Tong University, <sup>2</sup>UC San Diego</div>
 
@@ -93,24 +93,37 @@
                         <br>
                         <br>
                         <br>
-
-
-                    <h2 class="title is-2">Summary</h2>
-                    <div class="content has-text-justified">
-                        <p class="abstract" style="font-size:120%;">
-                            A prominent approach to visual Reinforcement Learning (RL) is to learn an internal state representation using self-supervised methods, which has the potential benefit of improved sample-efficiency and generalization through additional learning signal and inductive biases. 
-                            However, while the real world is inherently 3D, prior efforts have largely been focused on leveraging 2D computer vision techniques as auxiliary self-supervision. 
-                            In this work, we present a unified framework for self-supervised learning of 3D representations for motor control. Our proposed framework consists of two phases: 
-                            a <b>pretraining</b> phase where a deep voxel-based 3D autoencoder is pretrained on a large object-centric dataset, and a <b>finetuning</b> phase where the representation is jointly finetuned together with RL on in-domain data. 
-                            We empirically show that our method enjoys improved sample efficiency in simulated manipulation tasks compared to 2D representation learning methods. 
-                            Additionally, our learned policies transfer zero-shot to a real robot setup with only approximate geometric correspondence and uncalibrated cameras, and successfully solve motor control tasks that involve grasping and lifting from a single RGB camera. 
-                        </p>
-                    </div>
+                        
                 </div>
             </div> 
             <br>
             <br>
             <br>
+        </div>
+    </section>
+    <section class="hero is-light is-small">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-five-sixths">
+                    <br>
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+           
+            <p class="abstract" style="font-size:120%;">
+                A prominent approach to visual Reinforcement Learning (RL) is to learn an internal state representation using self-supervised methods, which has the potential benefit of improved sample-efficiency and generalization through additional learning signal and inductive biases. 
+                However, while the real world is inherently 3D, prior efforts have largely been focused on leveraging 2D computer vision techniques as auxiliary self-supervision. 
+                In this work, we present a unified framework for self-supervised learning of 3D representations for motor control. Our proposed framework consists of two phases: 
+                a <b>pretraining</b> phase where a deep voxel-based 3D autoencoder is pretrained on a large object-centric dataset, and a <b>finetuning</b> phase where the representation is jointly finetuned together with RL on in-domain data. 
+                We empirically show that our method enjoys improved sample efficiency in simulated manipulation tasks compared to 2D representation learning methods. 
+                Additionally, our learned policies transfer zero-shot to a real robot setup with only approximate geometric correspondence and uncalibrated cameras, and successfully solve motor control tasks that involve grasping and lifting from a single RGB camera. 
+            </p>
+            <br>
+
+        </div>
+                </div>
+        </div>
+    </section>
+    <br>
             <div class="columns is-centered has-text-centered">
                 <div class="column is-five-sixths">
                     <h2 class="title is-2">Method Overview</h2>
