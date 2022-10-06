@@ -27,6 +27,16 @@ body {
   border-radius: 10px;
 }
 
+.videostyle_with_border{
+  border: 5px solid #e18b32;
+  border-radius: 10px;
+}
+
+.videostyle_input{
+  border: 5px solid #7e9add;
+  border-radius: 10px;
+}
+
 .teaser .hero-body {
   padding-top: 0;
   padding-bottom: 3rem;

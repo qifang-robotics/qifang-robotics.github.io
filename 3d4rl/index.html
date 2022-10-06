@@ -45,6 +45,16 @@
                 </div>
                 <div class="column has-text-centered">
                     <div class="publication-links">
+                        <span class="link-block">
+                            <a href="static/rl3d_slides.pdf"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="ai ai-arxiv"></i>
+                              </span>
+                              <span>arXiv</span>
+                            </a>
+                          </span>
+                          &nbsp; &nbsp;
                       <!-- PDF Link. -->
                       <span class="link-block">
                         <a href="static/rl3d_paper.pdf"
@@ -53,17 +63,6 @@
                               <i class="fas fa-file-pdf"></i>
                           </span>
                           <span>Paper</span>
-                        </a>
-                      </span>
-                      &nbsp; &nbsp;
-                      <!-- Video Link. -->
-                      <span class="link-block">
-                        <a href="static/rl3d_slides.pdf"
-                           class="external-link button is-normal is-rounded is-dark">
-                          <span class="icon">
-                              <i class="fab fa-youtube"></i>
-                          </span>
-                          <span>Slides</span>
                         </a>
                       </span>
                       &nbsp; &nbsp;
@@ -84,23 +83,16 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="hero teaser">
         <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-five-sixths">
-                    <iframe width="672" height="378" src="https://www.youtube.com/embed/Bm7_b99nNSc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                        <br>
-                        <br>
-                        <br>
-                        
-                </div>
-            </div> 
-            <br>
-            <br>
-            <br>
+          <div class="hero-body">
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" width="100%">
+              <source src="videos/rl3d_teaserv2.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
-    </section>
+      </section>
+
     <section class="hero is-light is-small">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
@@ -109,9 +101,11 @@
         <h2 class="title is-2">Abstract</h2>
         <div class="content has-text-justified">
            
-            <p class="abstract" style="font-size:120%;">
+            <p class="abstract" style="font-size:100%; line-height: 150%;">
                 A prominent approach to visual Reinforcement Learning (RL) is to learn an internal state representation using self-supervised methods, which has the potential benefit of improved sample-efficiency and generalization through additional learning signal and inductive biases. 
                 However, while the real world is inherently 3D, prior efforts have largely been focused on leveraging 2D computer vision techniques as auxiliary self-supervision. 
+                <br>
+                <br>
                 In this work, we present a unified framework for self-supervised learning of 3D representations for motor control. Our proposed framework consists of two phases: 
                 a <b>pretraining</b> phase where a deep voxel-based 3D autoencoder is pretrained on a large object-centric dataset, and a <b>finetuning</b> phase where the representation is jointly finetuned together with RL on in-domain data. 
                 We empirically show that our method enjoys improved sample efficiency in simulated manipulation tasks compared to 2D representation learning methods. 
@@ -129,7 +123,7 @@
                     <h2 class="title is-2">Method Overview</h2>
                     <div class="content has-text-justified">
                         <div class="container" , align="center" style="margin-top: -0px; margin-bottom: 2px">
-                            <img src="figures/overview.png" style="width: 90%;" alt="">
+                            <img src="figures/overview.png" style="width: 70%;" alt="">
                         </div>
                     </div>
 
@@ -157,74 +151,7 @@
     <br>
             <br>
             <br>
-    <section>
-        <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-            <h2 class="title is-2">Visualization of Static View and Dynamic View</h2>
-        </div>
-        <br>
-
-
-        <div class="columns is-centered has-text-centered">
-            <div class="column">
-                <div class="columns is-centered">
-                    <div class="column content">
-                        <h2 class="title is-4">Lift</h2>
-                        <h2 class="title is-5">Static      &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   Dynamic</h2>
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                            <source src="videos/dynamic_camera/robot_lift.mp4" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="columns is-centered">
-                    <div class="column content">
-                        <h2 class="title is-4">Push</h2>
-                        <h2 class="title is-5">Static      &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   Dynamic</h2>
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                            <source src="videos/dynamic_camera/robot_push.mp4" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-            </div>
-          
-        </div>
-
-
-        <div class="columns is-centered has-text-centered">
-        <div class="column">
-            <div class="columns is-centered">
-                <div class="column content">
-                    <h2 class="title is-4">Peg in Box</h2>
-                    <h2 class="title is-5">Static      &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   Dynamic</h2>
-                    
-                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                        <source src="videos/dynamic_camera/robot_pegbox.mp4" type="video/mp4"/>
-                    </video>
-                   
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="columns is-centered">
-                <div class="column content">
-                    <h2 class="title is-4">Reach</h2>
-                    <h2 class="title is-5">Static      &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   Dynamic</h2>
-                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                        <source src="videos/dynamic_camera/robot_reach.mp4" type="video/mp4" />
-                    </video>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        </div>
-
-    </section>
-    <br>
+    
     <br>
     <br>
     <section class="videos">
@@ -234,543 +161,32 @@
                 <h2 class="title is-2">Sim-to-Real Results</h2>
             </div>
             <br>
-            <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;text-align: center;">
-                    In our real-world evaluation, policies are transferred zero-shot, <i>i.e.</i>, without finetuning nor access to real world data prior to deployment.
-                </p>
-            </div>
-
-            <!-- here is one part -->
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Lift</h2>
-            </div>
             
 
-            <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;text-align: center;">
-                    Goal: grasp and lift the green object on the table.
-                </p>
-            </div>
-            <br>
-
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Ours (3D Pretrain)</h2>
-            </div>
-            
-            <div class="columns is-centered has-text-centered">
-
-        
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp/lift/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
+                <div class="column has-text-centered">
+                  <video autoplay="" muted="" loop="" playsinline="" width="100%">
+                    <source src="videos/real_slides/real_reach.mp4" type="video/mp4">
+                  </video>
                 </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/lift/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
+                <div class="column has-text-centered">
+                  <video autoplay="" muted="" loop="" playsinline="" width="100%">
+                    <source src="videos/real_slides/real_push.mp4" type="video/mp4">
+                  </video>
                 </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/lift/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/lift/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/lift/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <!-- part end -->
-            <br>
-            <br>
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Baseline (MoCo Pretrain)</h2>
-            </div>
-            <!-- <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;">
-                   Baseline struggles to reach the object and grasp it and can not raise it high most of the time.
-                </p>
-            </div> -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp_baseline/lift/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/lift/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/lift/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/lift/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/lift/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-
-            <br>
-            <br>
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Push</h2>
-            </div>
-            <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;text-align: center;">
-                    Goal: push the green object to the red target location.
-                </p>
-            </div>
-            <br> 
-            
-
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Ours (3D Pretrain)</h2>
-            </div>
-            
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp/push/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/push/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/push/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/push/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/push/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <br>
-            <br>
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Baseline (MoCo Pretrain)</h2>
-            </div>
-            <!-- <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;">
-                    Baseline moves around the object and struggles to locate the goal.
-                </p>
-            </div> -->
-
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp_baseline/push/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/push/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/push/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/push/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/push/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <br>
-            <br>
-
-            <!-- here is one part -->
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Peg in Box</h2>
-            </div>
-            <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;text-align: center;">
-                    Goal: place the peg into the box.
-                </p>
-            </div>
-            <br> 
+                <div class="column has-text-centered">
+                    <video autoplay="" muted="" loop="" playsinline="" width="100%">
+                      <source src="videos/real_slides/real_pegbox.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="column has-text-centered">
+                    <video autoplay="" muted="" loop="" playsinline="" width="100%">
+                      <source src="videos/real_slides/real_lift.mp4" type="video/mp4">
+                    </video>
+                  </div>
+           
 
 
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Ours (3D Pretrain)</h2>
-            </div>
-            
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp/pegbox/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/pegbox/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/pegbox/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/pegbox/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/pegbox/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <br>
-            <br>
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Baseline (MoCo Pretrain)</h2>
-            </div>
-            <!-- <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;">
-                    Baseline could also gain success, but not as quickly as ours most of the time. 
-                </p>
-            </div> -->
-
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp_baseline/pegbox/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/pegbox/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/pegbox/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/pegbox/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/pegbox/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-
-
-            <br>
-            <br>
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Reach</h2>
-            </div>
-            <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;text-align: center;">
-                    Goal: reach the red target.
-                </p>
-            </div>
-            <br>
-
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Ours (3D Pretrain)</h2>
-            </div>
-            
-
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp/reach/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/reach/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/reach/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/reach/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp/reach/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <br>
-            <br>
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-4">Baseline (MoCo Pretrain)</h2>
-            </div>
-
-            <!-- <div class="content has-text-justified">
-                <p class="abstract" style="font-size:120%;">
-                    Baseline could solve the task, while the failure sometimes occurs when the estimation of the agent is not accurate.
-                </p>
-            </div> -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success"  playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
-                                <source src="videos/real_exp_baseline/reach/1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success"  playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/reach/2.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/reach/3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video class="videostyle_failure" playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/reach/4.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="column">
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-                                <source src="videos/real_exp_baseline/reach/5.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-
-
-            </div>
+         </div>
 
 <br>
     </section>
@@ -780,6 +196,11 @@
 <br>
 <section class="videos">
     <div class="container is-max-desktop">
+        <details class="has-text-centered">
+            <summary class="title is-6 button">
+                Sim-to-Perturbed-Real Results
+              </summary>
+        <br>
         <br>
         <div class="columns is-centered has-text-centered">
             <h2 class="title is-2">Sim-to-Perturbed-Real Results</h2>
@@ -803,18 +224,18 @@
             </p>
         </div>
         <br>
-
+        
         <div class="columns is-centered has-text-centered">
             <h2 class="title is-4">Ours (3D Pretrain)</h2>
         </div>
         
         <div class="columns is-centered has-text-centered">
 
-    
 
             <div class="column">
                 <div class="columns is-centered">
                     <div class="column content">
+                        
                         <video class="videostyle_success" playsinline="" autoplay="" loop="" preload="" muted="" width=100%">
                             <source src="videos/real_perturbed_exp/lift/1.mp4" type="video/mp4" />
                         </video>
@@ -861,7 +282,8 @@
                     </div>
                 </div>
             </div> -->
-        </div>
+        
+    </div>
         <!-- part end -->
         <br>
         <br>
@@ -1321,7 +743,8 @@
         </div>
 
 
-        </div>
+    </details>    
+    </div>
 
 <br>
 </section>
@@ -1414,7 +837,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <h2 class="title is-4">Real Input</h2>
-                        <img src="videos/real_view_synthesis/pegbox_finetune0.01/real_img1.png" style="width: 70%;" alt="">
+                        <img class="videostyle_input" src="videos/real_view_synthesis/pegbox_finetune0.01/real_img1.png" style="width: 70%;" alt="">
                     </div>
                 </div>
             </div>
@@ -1428,12 +851,12 @@
                 </div>
             </div> -->
 
-
+            
             <div class="column">
                 <div class="columns is-centered">
                     <div class="column content">
                         <h2 class="title is-4">Synthesis (15°)</h2>
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/pegbox_finetune0.01/interp_15.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1453,7 +876,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <h2 class="title is-4">Synthesis (30°)</h2>
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/pegbox_finetune0.01/interp_30.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1470,7 +893,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Real Input</h2> -->
-                        <img src="videos/real_view_synthesis/push_finetune0.01/real_img1.png" style="width: 70%;" alt="">
+                        <img class="videostyle_input" src="videos/real_view_synthesis/push_finetune0.01/real_img1.png" style="width: 70%;" alt="">
                     </div>
                 </div>
             </div>
@@ -1480,7 +903,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Synthesis (15°)</h2> -->
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/push_finetune0.01/interp_15.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1492,7 +915,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Synthesis (30°)</h2> -->
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/push_finetune0.01/interp_30.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1507,7 +930,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Real Input</h2> -->
-                        <img src="videos/real_view_synthesis/lift_finetune0.01/real_img1.png" style="width: 70%;" alt="">
+                        <img class="videostyle_input" src="videos/real_view_synthesis/lift_finetune0.01/real_img1.png" style="width: 70%;" alt="">
                     </div>
                 </div>
             </div>
@@ -1517,7 +940,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Synthesis (15°)</h2> -->
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/lift_finetune0.01/interp_15.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1529,7 +952,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Synthesis (30°)</h2> -->
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/lift_finetune0.01/interp_30.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1544,7 +967,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Real Input</h2> -->
-                        <img src="videos/real_view_synthesis/reach_finetune0.01/real_img1.png" style="width: 70%;" alt="">
+                        <img class="videostyle_input" src="videos/real_view_synthesis/reach_finetune0.01/real_img1.png" style="width: 70%;" alt="">
                     </div>
                 </div>
             </div>
@@ -1554,7 +977,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Synthesis (15°)</h2> -->
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video  class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/reach_finetune0.01/interp_15.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -1566,7 +989,7 @@
                 <div class="columns is-centered">
                     <div class="column content">
                         <!-- <h2 class="title is-4">Synthesis (30°)</h2> -->
-                        <video playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
+                        <video class="videostyle_with_border" playsinline="" autoplay="" loop="" preload="" muted="" width=70%">
                             <source src="videos/real_view_synthesis/reach_finetune0.01/interp_30.mp4" type="video/mp4" />
                         </video>
                     </div>
