@@ -28,7 +28,7 @@ body {
 }
 
 .videostyle_with_border{
-  border: 5px solid #e18b32;
+  border: 5px solid #f19423;
   border-radius: 10px;
 }
 
@@ -86,11 +86,15 @@ body {
     font-weight: bolder;
 }
 
-.publication-authors {
-}
 
-.publication-authors a {
+
+/* .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
+} */
+.publication-authors a {
+  color: #f19423 !important;
+  font-weight: bold;
+  
 }
 
 .publication-authors a:hover {
