@@ -1,3 +1,3 @@
-# Academic Website of Yanjie Ze
-This repo contains the academic website of Yanjie Ze.
+# Academic Website of Qi Fang
+This repo contains the academic website of Qi Fang.
 
