@@ -1,0 +1,698 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unadversarial Point Cloud</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="168e8005-cc0b-4d0e-876f-d6f9487f7a1c" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🤖</span></div><h1 class="page-title">Unadversarial Point Cloud</h1></header><div class="page-body"><p id="409ee1da-025b-4f3c-a51a-d7d4f9463b40" class="">We aim to augment the performance of NN by utilizing <strong>gradient-guided</strong> data-augmentation(*<strong>unadversarial learning</strong>*) method.</p><p id="93ca20b5-a831-4694-8d39-419465630a1d" class="">In the implementation, we use the common way of generating the adversarial example, using methods such as FGSM/PGD to derive the gradient on the input then update the input by back propagation.</p><p id="fa7100e7-c728-47e6-849e-17c2c583e854" class="">
+</p><p id="38690f13-09bd-43c0-8d46-98045a04f6e3" class="">the experiments to verify the unadv in the object-level point cloud </p><figure id="a0f44b6e-d218-4197-8fc6-d487ceef6c52" class="link-to-page"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Object%20Level%20Exp%20a0f44b6ed21841978fc6d487ceef6c52.html">Object Level Exp</a></figure><p id="0a903fd3-75b1-420b-8377-7e3caba7dd18" class="">
+</p><h2 id="ebafc714-009c-494c-aa85-1c409f2c1df2" class="">Background</h2><hr id="a5b2ccb6-2639-4638-9d52-8c28228221a3"/><p id="d528e82b-5333-4fc2-ac73-7c2d7e5678fb" class="">In the past, it was common to use gradient to modify input examples mostly to generate Adversarial Examples (AEs), i.e., to maximize target loss under certain restrictions (e.g., changes should be invisible to human) to achieve an attack against a certain task, called Adversarial Attack.</p><p id="c5d8deeb-416c-489c-8c8d-11a4eeaa2816" class="">
+</p><p id="38533e49-3d70-4db7-bb24-5ca59dd70f89" class="">And an article from NeurIPS 2021:</p><figure id="872bfc32-564b-45be-9aea-954e242d6f2c" class="link-to-page"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Unadversarial%20Examples%20Designing%20Objects%20for%20Robus%20872bfc32564b45be9aea954e242d6f2c.html">Unadversarial Examples: Designing Objects for Robust Vision(NeurIPS2021, MIT&amp;MSR)</a></figure><p id="3cc877aa-cb0a-4e50-8f9a-928da781ec1a" class="">The paper try to modify the inputs in a simulated/realistic environment using the unadversarial approach to make it easier for the model to classify/detect the target object.</p><p id="b9d9564a-8867-4654-b2cc-2ad66333638f" class="">This leads us to consider whether this process can help us to achieve more <strong>robust objects</strong>, or to defend <strong>adv attacks</strong>?</p><p id="55c02743-4383-47f8-bd33-6d0d34a42f29" class="">
+</p><p id="849b76c8-1002-4281-a36b-0e54f8328ad2" class="">
+</p><h2 id="666ed8f4-eb5e-4ca5-94e2-a3a30b30d205" class="">Motivation &amp; <strong>Story</strong></h2><hr id="7bec7432-ab8f-4a18-b25f-ea673819b862"/><p id="513a1903-8fb3-4291-a434-afd32e94f652" class="">In the previous discussion, we discussed about two general directions:</p><ol type="1" id="6e375657-014b-41e8-bde8-174b093d4160" class="numbered-list" start="1"><li>One is to study/verify the relationship between adv↔unadv to see if we can get some insights, which is closer to studying theoretical deep learning .</li></ol><ol type="1" id="294a929c-8c0a-4466-816c-5dae3ad54f2c" class="numbered-list" start="2"><li>Another is to find applications of unadv in real-life scenarios, referencing</li></ol><figure id="65a4eede-4157-4c91-97d2-59a2efc05e16" class="link-to-page"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Unadversarial%20Examples%20Designing%20Objects%20for%20Robus%2065a4eede41574c9197d259a2efc05e16.html">Unadversarial Examples: Designing Objects for Robust Vision(NeurIPS2021, MIT&amp;MSR)(2)</a></figure><p id="7be4b14f-222d-4a17-b781-19bb7c7b19fc" class="">to find scenarios where there may be applications in real world to design simulated/realistic robust objects.</p><p id="8c58908e-7001-4030-8a7d-c98a33da042e" class="">
+</p><p id="346013bc-9d7e-470a-bf44-0fcb3566393e" class="">
+</p><p id="7962811a-1da6-4577-b4e0-89ca28b78a89" class="">
+</p><h3 id="1c8792c1-8e43-4f2d-91b5-35fd4591237d" class="">Theory Track</h3><hr id="ce917284-65a6-4394-acd1-10f4db41b5d4"/><p id="ab0cc20f-da9f-4b7b-9597-0ca6711b98ca" class="">In the direction of theoretical research, we can explore the relationship between adv and unadv.</p><h3 id="12a44728-21ae-418c-9482-6ba74ece1d63" class="">Q1：</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5b894499-4a59-4f9e-bcc8-0916e700267b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Are Reverse Adversarial (Unadversarial) and Adversarial Reversible to each other?</div></figure><h3 id="24b98731-ee80-459f-ab51-5752c536340b" class="">A1：</h3><p id="0ef6af15-8549-4901-97cd-391186e53a5c" class="">More likely to be.</p><figure id="85bcab30-4cbe-4d1a-94bc-05e772f9bd03" class="link-to-page"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/ICCV%2021&#x27;%20Adversarial%20Attacks%20Are%20Reversible%20With%20N%2085bcab304cbe4d1a94bc05e772f9bd03.html">ICCV 21&#x27; :Adversarial Attacks Are Reversible With Natural Supervision</a></figure><p id="c0bcd03f-1cb8-4b32-b2df-9015ee498895" class="">In this paper, the authors found that adv attack affects to increase the distance of the image itself in the contrastive embedding space, so using self-supervised contrastive to optimize the input image that may be attacked can be defensive. This side illustrates that Adversarial Attack can be defended by some form (e.g. self-supervise) of reverse adv.</p><p id="0d3108b5-d66f-4267-b242-a11b187223bd" class="">
+</p><p id="85cbf6da-d0c6-48a3-8d51-9006452b4b85" class="">In another article</p><figure id="d172b4cd-a955-4207-9923-7b73855d6777" class="link-to-page"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/arXiv%20Brain%20inspired%20Reverse%20Adversarial%20Examples%20d172b4cda955420799237b73855d6777.html">arXiv: Brain inspired Reverse Adversarial Examples</a></figure><p id="ae2da36d-e054-467d-8eee-7a1a16f343bd" class="">The authors argue that adv/unadv is itself symmetric.</p><p id="9e5fb8b2-3a06-4df2-a1d7-ffc4fddb6e25" class="">
+</p><p id="a70413f7-08fe-4e76-b60a-0319ba1ee058" class="">
+</p><p id="a90e17e1-bd7a-40ca-bd48-84824cefb8ef" class="">
+</p><h3 id="aec6bf36-4886-4715-a8cf-338ccc27e63d" class="">Q2：</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="62c1f3c8-cea6-4b9e-af8d-0f81e14b4ba3"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">If the two are reversible/symmetric, can this feature be used to design a stronger attack or defense approach? We may design adversarial attack method that is LEAST reversible. That could be beneficial.</div></figure><h3 id="3aed2190-ae99-44bb-98c4-cfb6671fc0e1" class="">A2：</h3><p id="6323d900-ffbc-44b6-8359-64ef6195adc7" class="">One can start with a study on Transferable adv attack, from a paper that has been rejected by ICLR22.</p><figure id="043bc800-ce23-4fa9-9f3c-f860644fc61a" class="link-to-page"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Boosting%20the%20Transferability%20of%20Adversarial%20Attack%20043bc800ce234fa99f3cf860644fc61a.html">Boosting the Transferability of Adversarial Attacks with Reverse Adversarial Perturbation</a></figure><p id="b827d108-e970-46ba-8a58-751bf4b83c31" class="">From this article we can get some insights that if the adv example is restricted to the region where the loss does not vary drastically, we can have better transferability.</p><p id="b31ea3fb-ca1a-4932-8dd7-df291a0cfff2" class="">This theory can also be explained in terms of the difficulty of unadv.</p><p id="41af6d9c-def1-4e5f-89dc-92fb26c3e7f3" class="">less reversible adv example = adv example at flatter regions of loss，if unadv was performed at flatter region, unadv perturb is also the most difficult.</p><p id="ea42a877-6861-4ee7-a1c3-d4d0cebdc8b1" class="">But this is not about breaking the cycle of consistency, it&#x27;s about how to make it hardest for unadv to work, or in the framework of the two being mutually reversible.</p><p id="8062e719-1c0e-46c1-87a0-5d7cebe011be" class="">On the flip side, if unadv is performed at flatter regions, then it is less likely to be attacked.</p><p id="35e364b3-9b3c-4e25-b7bb-858067fe8565" class="">
+</p><h3 id="ab918e07-981a-4323-9fa5-dcbd012d233e" class="">Q3：</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="048895ef-1b97-4d58-ad77-9379af891fb8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">What if we break the cycle consistency? What does it mean? Is it that it will bring a stronger and less defensible AE? If so, how to generate AE that breaks this cycle consistency? It would be interesting to get Insight in this dimension, as it can be distinguished from all previous attacks.</div></figure><h3 id="602a0f70-e0ae-4306-8537-d5e49fa3de9a" class="">A3：</h3><p id="5c45b579-10fd-4d0f-925c-b7cebedd57ff" class="">Don&#x27;t have much idea at the moment. Need to think about ways to implement adv/unadv that can break this cycle and maybe guide us to invent new attack methods.</p><p id="e3e4102d-2a3e-4d14-8d57-c0699f1e4e49" class="">
+</p><p id="7d96f4fd-97f9-417f-8efe-9ad319a3ef8b" class="">
+</p><h3 id="990b11c0-6532-45db-862c-e6510194d1eb" class=""><strong>Additions</strong></h3><p id="d82f2a45-d90a-4382-b7c5-a3a07d8aac49" class="">Adi Shamir gave a keynote speech titled &quot;A New Theory of Adversarial Examples in Machine Learning&quot; to explain his latest published work. In this talk, Prof. Adi Shamir proposed a &quot;dimpled manifold&quot; to explain the nature and existence of adversarial examples in machine learning, providing a new way of thinking about how deep neural networks work, which is groundbreaking for the field.</p><p id="e90ea8ca-fe85-4b46-9516-bd75c8a01c18" class=""><a href="https://arxiv.org/pdf/2106.10151.pdf">https://arxiv.org/pdf/2106.10151.pdf</a></p><p id="12464e68-2881-45de-bb28-bf3fb2f7415a" class="">The first stage is the rapid formation of decision boundary, which is the process of quickly getting the decision boundary close to the image manifold, corresponding to the rapid decline of the loss at the beginning of training. The second stage is &quot;hammering&quot;, i.e., hammering on the manifold to give some grooves to a certain class.</p><p id="d8eb7ee0-e58f-4cd0-97ec-307cf60203e6" class="">If the rapid decline of loss at the beginning is to produce a smooth manifold in the high-dimensional place for decision boundary, then the later training is like a small knock on this manifold to do some slots for fine tuning.</p><p id="709dfcca-dd96-4568-9627-68f49b9e2bad" class="">That is why it is easy for adv examples to jump out some slots with small changes under the gradient guidance.</p><p id="2876dfd8-226b-43de-8d61-7ec21f18e418" class="">
+</p><p id="b089927f-be77-439a-912c-6b9bf4106a8d" class="">
+</p><p id="1ce86bb3-acaa-488f-a2e8-688dfc268399" class="">
+</p><p id="5ed23551-d4ba-4640-a353-fb963f611935" class="">
+</p><p id="1230bb1e-0422-4067-92de-bd759e063b30" class="">
+</p><h3 id="c7a96f3d-1495-4a4a-9175-26eaceb9b099" class="">Application Track</h3><hr id="7c4e59f6-ddd7-40d1-9de0-ea37c408372a"/><p id="ed1bfd06-5058-4d71-9d2c-08aa3556d88b" class="">In the direction of application research, we can try to use unadv to generate robust objects to improve the performance of downstream tasks.</p><p id="03f08e5a-d7fa-4e19-89d1-65534d54d445" class="">
+</p><p id="c53a53a1-7148-4e09-8686-75623731cc9b" class="">
+</p><h3 id="a00041b4-ae62-4802-ac55-42a6811ea0da" class="">Q1：</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f1223b91-a5bc-4525-88ee-ae1165152af2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Can we Extend unadversarial example&#x27;s work and find applications in realistic scenarios?</div></figure><h3 id="3aa79130-04dc-4617-b604-e07c8f4a712a" class="">A1：</h3><ol type="1" id="26e56379-065a-4ecd-bca1-374d441d1572" class="numbered-list" start="1"><li>Robust tags for robotics</li></ol><p id="cc5d40a0-2352-4283-a385-d275b40650af" class="">April Tag, widely used in robotics, is detected under a fully rule-based recognition process. </p><p id="8e6c00f0-045e-4dfa-8646-52a073ac87b2" class="">Its performance will  degrade under fisheye lenses.</p><figure id="719aa84f-a071-4759-845e-6d8110633924" class="image"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Untitled.png"><img style="width:1562px" src="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Untitled.png"/></a></figure><p id="ffc594b0-387a-4ef2-96e5-e91f8480521e" class="">Task：Optimize correspondence for input</p><p id="f55f4d3b-fc56-4654-92e6-d2606081de93" class="">Is it possible to add the unadv pattern to the April Tag to make the identification process easier?</p><p id="1a6ffef8-86bf-4d68-87a2-c005e92e0c76" class="">new image pattern vs April Tag (in distortion/low-res/side-view/high-contrast/very-close distance)</p><p id="e6c993fa-281b-4967-8f04-a762866ea9d9" class="">
+</p><p id="db80459d-b6a2-4bd7-90ae-a814866521fe" class="">
+</p><ol type="1" id="cd7fb6fb-4cbb-49d0-8de0-ee0e8e0eac0a" class="numbered-list" start="2"><li>Robust stickers/objects for autonomous driving</li></ol><p id="204ad715-5645-46bc-9813-458b020d2afb" class="">In past papers, there are attempts to 3D print in virtual space/realistic scenes to generate adversarial object to jeopardize object detector, the same set can be given to unadv to try: can we generate <strong>unadv stickers </strong>(this is almost done in this article mentioned before, we can add some constrains to make it look more fancy or realistic); or <strong>render an unadv object on the car</strong>, making it easier to be detected, these two should be more feasible direction.</p><figure id="39fcb832-80e8-4236-b449-7c02115753bb" class="image"><a href="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Untitled%201.png"><img style="width:1976px" src="Unadversarial%20Point%20Cloud%20168e8005cc0b4d0e876fd6f9487f7a1c/Untitled%201.png"/></a></figure><p id="a5477162-844d-4314-9b04-d2f1f875fdf7" class="">
+</p><p id="5e36efbe-a613-4c88-9dd7-c0db62afb5d1" class="">
+</p><p id="0ae84410-af13-4765-a4d2-ecd014d2172e" class="">
+</p><p id="084e8507-cef3-4524-b4f0-60fa423e5529" class="">
+</p><p id="ed127d75-d92d-42e2-a83e-384c52ca723e" class="">
+</p></div></article></body></html>
