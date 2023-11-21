@@ -102,6 +102,47 @@
             </td>
           </tr>
 
+          <tr onmouseout="occ4d_stop()" onmouseover="occ4d_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one" , id="occ4d">
+                <div class="two" id='occ4d_vid'><video width=100% style="padding-top:0px" height=100% muted autoplay loop>
+                    <source src="images/Occ4cast_illustration.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video></div>
+                <img id="occ4d_img" src='images/Occ4cast_illustration.jpg' width="160"
+                  style="padding-top:40px">
+              </div>
+              <script type="text/javascript">
+                function occ4d_start() {
+                  document.getElementById('occ4d_vid').style.opacity = "1";
+                  document.getElementById('occ4d_img').style.opacity = "0";
+                }
+
+                function occ4d_stop() {
+                  document.getElementById('occ4d_vid').style.opacity = "0";
+                  document.getElementById('occ4d_img').style.opacity = "1";
+                }
+                occ4d_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://arxiv.org/abs/2310.11239" id="occ4d">
+                <papertitle>Occ4cast: LiDAR-based 4D Occupancy Completion and Forecasting</papertitle>
+              </a>
+              <br>
+              Xinhao Liu*, Moonjun Gong*, <strong>Qi Fang</strong>, Haoyu Xie, Yiming Li, Hang Zhao, Chen Feng
+              <br>
+              <em>arXiv</em>, 2023
+              <br>
+              <a href="https://arxiv.org/abs/2310.11239">arXiv</a> /
+              <a href="https://ai4ce.github.io/Occ4cast/">project</a> /
+              <a href="https://github.com/ai4ce/Occ4cast/">code</a> /
+              <a href="https://huggingface.co/datasets/ai4ce/OCFBench">data</a>
+              <p>"We proposed a new LiDAR perception task, Occupancy Completion and Forecasting (OCF), combining scene completion and forecasting in
+              autonomous driving, and evaluates it using the newly curated OCFBench dataset."</p>
+            </td>
+          </tr>
+
 			    <tr onmouseout="idlab_stop()" onmouseover="idlab_start()">
 			      <td style="padding:20px;width:25%;vertical-align:middle">
 			        <div class="one">
@@ -226,6 +267,33 @@
 
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
+                <tr onmouseout="UofT_stop()" onmouseover="UofT_start()">
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <div class="two" id='UofT'></div>
+                    <div class="one" id="UofT_pic">
+                      <img src='images/UofT.png' width="180" style="padding-top:0px;padding-left:-200px;">
+                    </div>
+                    <script type="text/javascript">
+                      function UofT_start() {
+                        document.getElementById('UofT').style.opacity = "1";
+                      }
+
+                      function UofT_stop() {
+                        document.getElementById('UofT').style.opacity = "0";
+                      }
+                      UofT_stop()
+                    </script>
+                  </td>
+                  <td style="padding:20px;width:25%;vertical-align:middle">
+                    <papertitle>Universit of Toronto, Toronto, Canada</papertitle>
+                    <br>
+                    <em>Department of Computer Scienece, MS in Applied Computing (MScAC)</em>
+                    <br>
+                    Concentration: Artificial Intelligence
+                    </p>
+                  </td>
+                </tr>
+
                 <tr onmouseout="NYU_stop()" onmouseover="NYU_start()">
                   <td style="padding:20px;width:25%;vertical-align:middle">
                     <div class="two" id='NYU'></div>
